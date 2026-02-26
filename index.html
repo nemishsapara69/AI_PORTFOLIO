@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── Primary SEO ── -->
+  <title>Nemish Sapara AI Portfolio</title>
+  <meta name="description" content="Nemish Sapara — AI/ML Developer & Data Science Enthusiast. Building intelligent systems, ML models, and AI-powered web applications." />
+  <meta name="keywords" content="Nemish Sapara, AI Portfolio, ML Developer, AIML Developer, Data Science, Machine Learning, Nemish Sapara Portfolio, AI Engineer" />
+  <meta name="author" content="Nemish Sapara" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ── Open Graph (WhatsApp, LinkedIn, Facebook preview) ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nemish Sapara AI Portfolio" />
+  <meta property="og:description" content="AI/ML Developer building intelligent systems, ML models & AI-powered products." />
+  <meta property="og:url" content="https://nemishsapara69.github.io/AI_PORTFOLIO/" />
+  <meta property="og:site_name" content="Nemish Sapara AI Portfolio" />
+
+  <!-- ── Twitter / X Card ── -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Nemish Sapara AI Portfolio" />
+  <meta name="twitter:description" content="AI/ML Developer building intelligent systems, ML models & AI-powered products." />
+
+  <!-- ── Fonts ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Hide intro instantly if already seen (prevents flash on refresh) -->
+  <script>localStorage.removeItem('introSeen');if(localStorage.getItem('introSeen')){document.documentElement.classList.add('intro-seen');}history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+</head>
+
+<body>
+
+  <!-- ========== CINEMATIC INTRO SCREEN ========== -->
+  <div id="introScreen">
+    <!-- Static / Noise Burst Canvas -->
+    <canvas id="introStatic"></canvas>
+
+    <!-- Logo & Name Container -->
+    <div id="introContent">
+      <div class="logo-wrapper">
+        <svg class="ns-logo" viewBox="0 0 100 100">
+          <path class="ns-path" d="M20 80 V20 L80 80 V20" fill="none" stroke="currentColor" stroke-width="8" />
+          <path class="ns-accent" d="M30 50 H70" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3" />
+        </svg>
+      </div>
+      <div class="intro-text">
+        <h2 class="intro-name-typed" id="introNameTyped"></h2>
+        <p class="intro-subtitle-glitch" id="introSub">AI/ML Developer</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Noise Overlay -->
+  <div class="noise"></div>
+
+  <!-- Global Background Canvas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-pill">
+      <!-- Links -->
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+            </svg>
+            About
+          </a></li>
+        <li><a href="#skills" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            Skills
+          </a></li>
+        <li><a href="#projects" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M3 4a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm2 2v2h2V6H5zm8-3a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V4a1 1 0 00-1-1h-4zm1 5V6h2v2h-2zM3 13a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-4zm2 2v2h2v-2H5zm8-1a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 00-1-1h-4zm1 5v-2h2v2h-2z"
+                clip-rule="evenodd" />
+            </svg>
+            Projects
+          </a></li>
+        <li><a href="#contact" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+            Contact
+          </a></li>
+
+        <li><a href="NEMISH SAPARA .pdf" download="NEMISH SAPARA.pdf" class="nav-link nav-link-resume">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                clip-rule="evenodd" />
+            </svg>
+            Resume
+          </a></li>
+      </ul>
+    </div>
+    <!-- Mobile hamburger outside pill -->
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#skills" class="mobile-link">Skills</a></li>
+      <li><a href="#projects" class="mobile-link">Projects</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+
+      <li><a href="NEMISH SAPARA .pdf" download="NEMISH SAPARA.pdf" class="mobile-link">Resume</a></li>
+    </ul>
+    <div class="noise-overlay"></div>
+  </div>
+
+  <!-- Lightning Storm Overlay -->
+  <canvas id="lightningCanvas"></canvas>
+
+  <!-- Lightning Floating Button -->
+  <button id="lightningBtn" class="lightning-fab" title="Toggle Lightning Storm">&#x26A1;</button>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for work
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-greeting">Hello, I'm</span>
+        <span class="hero-name" id="heroName">Nemish Sapara</span>
+        <span class="hero-role">
+          <span class="role-prefix">I build</span>
+          <span class="role-rotating" id="roleRotating">
+            <span class="role-item active">AI Solutions</span>
+            <span class="role-item">ML Models</span>
+            <span class="role-item">Web Apps</span>
+            <span class="role-item">The Future</span>
+          </span>
+        </span>
+      </h1>
+
+      <p class="hero-desc">
+        An AIML Developer passionate about building intelligent systems.
+        Turning data into insights and ideas into impactful AI-powered products.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <span>View My Work</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">2</span>
+          <span class="stat-label">Research Papers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Neural Network Visual -->
+    <div class="hero-visual">
+      <canvas id="neuralCanvas"></canvas>
+      <div class="neural-label">Neural Network</div>
+    </div>
+
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line"></span>
+        <span>01. About Me</span>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title">Building Intelligent <br /><span class="gradient-text">Solutions</span></h2>
+          <p class="about-desc">
+            Hi! I'm <strong>Nemish Sapara</strong>, an AIML Developer with a passion for machine learning, data science,
+            and building intelligent web applications.
+            I love turning complex data into meaningful insights and real-world AI-powered products.
+          </p>
+          <p class="about-desc">
+            Beyond AI, I'm a Flutter & React developer, UI/UX designer, and content creator.
+            I'm always exploring new technologies and contributing to open-source projects.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              </div>
+              <div>
+                <div class="highlight-title">AI/ML Enthusiast</div>
+                <div class="highlight-desc">Building deep learning models that matter</div>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                  <path
+                    d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zm6-4a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zm6-3a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                </svg>
+              </div>
+              <div>
+                <div class="highlight-title">Data Storyteller</div>
+                <div class="highlight-desc">Turning data into powerful insights</div>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                  <path fill-rule="evenodd"
+                    d="M3 4a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm2 2v2h2V6H5zm8-3a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V4a1 1 0 00-1-1h-4zm1 5V6h2v2h-2zM3 13a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-4zm2 2v2h2v-2H5zm8-1a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 00-1-1h-4zm1 5v-2h2v2h-2z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <div class="highlight-title">Full-Stack Builder</div>
+                <div class="highlight-desc">React, Flutter & Flask — end-to-end</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://github.com/nemishsapara69" target="_blank" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            <span>View GitHub</span>
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS SECTION ===== -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line"></span>
+        <span>02. Skills</span>
+      </div>
+      <h2 class="section-title">Technologies I <span class="gradient-text">Work With</span></h2>
+      <p class="section-subtitle">A collection of tools and frameworks I use to build powerful applications</p>
+
+      <!-- Scrolling Icon Marquee -->
+      <div class="icon-marquee-wrap">
+        <div class="icon-marquee-track">
+          <!-- Python -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <linearGradient id="pa" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089"
+                gradientUnits="userSpaceOnUse" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
+                <stop offset="0" stop-color="#5a9fd4" />
+                <stop offset="1" stop-color="#306998" />
+              </linearGradient>
+              <linearGradient id="pb" x1="209.474" y1="1098.811" x2="173.62" y2="1149.537"
+                gradientUnits="userSpaceOnUse" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
+                <stop offset="0" stop-color="#ffd43b" />
+                <stop offset="1" stop-color="#ffe873" />
+              </linearGradient>
+              <path fill="url(#pa)"
+                d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z" />
+              <path fill="url(#pb)"
+                d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.693 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z" />
+            </svg><span>Python</span></div>
+          <!-- TensorFlow -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#e55b2d"
+                d="M24.57 127.86V46.47L64 23.34l39.43 23.13v40.59L64 110.19l-24.45-14.35V68.69l24.45 14.35 14.81-8.69V60.7L64 46.35l-24.82 14.56v47.77z" />
+              <path fill="#f8bf3c" d="M64 23.34L24.57 46.47v22.22L64 45.57l39.43 23.11V46.47z" />
+            </svg><span>TensorFlow</span></div>
+          <!-- PyTorch -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path
+                d="M65.6 35.9L46.1 55.4c-10.4 10.4-10.4 27.3 0 37.7 10.4 10.4 27.3 10.4 37.7 0 10.4-10.4 10.4-27.3 0-37.7l-5.7-5.7 8.1-8.1 5.7 5.7c14.7 14.7 14.7 38.6 0 53.3-14.7 14.7-38.6 14.7-53.3 0-14.7-14.7-14.7-38.6 0-53.3L57.5 28l8.1 7.9z"
+                fill="#ee4c2c" />
+              <circle cx="77.3" cy="29.8" r="5.4" fill="#ee4c2c" />
+            </svg><span>PyTorch</span></div>
+          <!-- Scikit-Learn -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#f89939" d="M54.03 43.4l6.17-22.16 22.14 6.17-6.16 22.15z" />
+              <path fill="#3499cd" d="M44.27 71.08L22.14 64.9l6.17-22.15 22.13 6.17z" />
+              <path fill="#3499cd" d="M77.88 96.75L55.74 90.6l6.17-22.16 22.13 6.17z" />
+              <path fill="#f89939" d="M105.86 84.6L83.73 78.4l6.16-22.15 22.14 6.17z" />
+              <ellipse fill="#3499cd" cx="64" cy="64" rx="21" ry="21" />
+              <ellipse fill="#fff" cx="64" cy="64" rx="12" ry="12" />
+            </svg><span>Scikit-Learn</span></div>
+          <!-- OpenCV -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <circle cx="64" cy="28" r="22" fill="#3f8cbf" />
+              <circle cx="28" cy="92" r="22" fill="#cf2027" />
+              <circle cx="100" cy="92" r="22" fill="#6db33f" />
+              <circle cx="64" cy="28" r="9" fill="#1a1a2e" />
+              <circle cx="28" cy="92" r="9" fill="#1a1a2e" />
+              <circle cx="100" cy="92" r="9" fill="#1a1a2e" />
+            </svg><span>OpenCV</span></div>
+          <!-- React -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <circle cx="64" cy="64" r="11.4" fill="#61dafb" />
+              <path
+                d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.5 7.1-2.4.7-4.7 1.4-6.9 2.3C58.6 29.1 110 42.2 110 64c0 21.8-51.4 34.9-74.7 18.8z"
+                fill="none" stroke="#61dafb" stroke-width="7.5" />
+              <path
+                d="M20.7 82.8c2.2.8 4.5 1.6 6.9 2.3-.6 2.4-1.1 4.8-1.5 7.1-2.1 13.2.2 22.5 6.6 26.1 1.9 1.1 4 1.6 6.4 1.6 7.1 0 15.9-5.2 24.9-13.9 9 8.7 17.9 13.9 24.9 13.9 2.4 0 4.5-.5 6.4-1.6 6.4-3.7 8.7-13 6.6-26.1-.4-2.3-.9-4.7-1.5-7.1 2.4-.7 4.7-1.4 6.9-2.3C69.4 98.9 18 85.8 18 64c0-21.8 51.4-34.9 74.7-18.8z"
+                fill="none" stroke="#61dafb" stroke-width="7.5" />
+              <path
+                d="M64 37.4c11.7 0 22.3 3.7 30.3 9.7-8-6-18.7-9.7-30.3-9.7s-22.3 3.7-30.3 9.7c8-6 18.6-9.7 30.3-9.7zm0 53.2c-11.7 0-22.3-3.7-30.3-9.7 8 6 18.7 9.7 30.3 9.7s22.3-3.7 30.3-9.7c-8 6-18.6 9.7-30.3 9.7z"
+                fill="#61dafb" />
+            </svg><span>React</span></div>
+          <!-- Flutter -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#3fb6d3" d="M12.3 64.2L76.3 0h39.4L51.7 64.2z" />
+              <path fill="#27aacd" d="M76.3 128l-29.7-29.7 14.9-14.9L116 128z" />
+              <path fill="#3fb6d3" d="M46.6 98.3L76.3 128H116L61.5 83.4z" />
+              <path fill="#27aacd" d="M51.7 64.2l14.9 14.9-14.9 14.9L12.3 64.2z" />
+              <path fill="#1c9ab5" d="M61.5 83.4l14.8-14.8 14.9 14.8-14.9 14.9z" />
+            </svg><span>Flutter</span></div>
+          <!-- Flask -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#fff"
+                d="M76.7 52.8c-1.4-.9-3.1-1.6-4.8-2.1 3.2-5.9 5-12.6 5-19.7C76.9 13.9 63 0 46 0S15.1 13.9 15.1 31c0 7.1 1.8 13.8 5 19.7-1.7.5-3.4 1.2-4.8 2.1C6.5 57 2 64.3 2 72.6 2 90.5 22.2 105 46 105s44-14.5 44-32.4c0-8.3-4.5-15.6-13.3-19.8zM46 96c-18.5 0-35-11.5-35-23.4 0-6.4 3.7-12.1 9.9-15.7 1.5-.9 3.2-1.5 5-1.9l3.3-.7-1.6-2.9C24.4 46.3 23.1 38.8 23.1 31 23.1 18.4 33.4 8 46 8s22.9 10.4 22.9 23c0 7.8-1.3 15.3-4.5 21.4l-1.6 2.9 3.3.7c1.8.4 3.5 1 5 1.9 6.2 3.6 9.9 9.3 9.9 15.7C81 84.5 64.5 96 46 96z" />
+              <circle fill="#fff" cx="36" cy="37" r="5" />
+              <circle fill="#fff" cx="56" cy="37" r="5" />
+              <path fill="#fff" d="M33 55h26v5H33z" />
+            </svg><span>Flask</span></div>
+          <!-- HTML5 -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#e44d26" d="M19.4 116L8 0h112l-11.4 116L64 128z" />
+              <path fill="#f16529" d="M64 118.4l36.5-10.1 9.7-109H64z" />
+              <path fill="#ebebeb"
+                d="M64 66H44.6l-1.4-15.6H64V35.2H27.7L28.1 40l4.1 46.4H64zm0 27.8l-.1.1-18.4-4.9-1.2-13H29.2l2.3 25.6L64 110z" />
+              <path fill="#fff"
+                d="M64 66v15.2h17.9L80.4 95l-16.4 4.4v14.9l30.2-8.4 2.2-24.5H64zm3.1-30.8H64v15.2h34.5l-1.6-18.5-4.2-47.2H64v15.2h29.4l2 22.3z" />
+            </svg><span>HTML5</span></div>
+          <!-- CSS3 -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#1572b6" d="M19.4 116L8 0h112l-11.4 116L64 128z" />
+              <path fill="#33a9dc" d="M64 118.4l36.5-10.1 9.7-109H64z" />
+              <path fill="#fff"
+                d="M64 66H44l1.4 15.2L64 86.1V70.7H55l-.6-6.7H64zm0-30.8H35.1l.6 6.3H64zm18.9 30.8H64v15.4l17.5-4.9 2.5-28.1H64v6.3h13.3z" />
+              <path fill="#ebebeb" d="M64 86.1L48.2 81.2 47 67H35l2.3 25.6L64 101V86.1z" />
+            </svg><span>CSS3</span></div>
+          <!-- JavaScript -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#f0db4f" d="M1.408 1.408h125.184v125.185H1.408z" />
+              <path fill="#323330"
+                d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.926-3.403 2.034.656 3.97 2.321 5.279 4.364l9.752-6.333c-2.247-3.403-5.271-6.078-9.284-7.964-3.895-1.867-8.429-2.439-13.082-1.596-4.252.764-8.295 2.956-10.964 6.075-2.929 3.405-3.946 7.897-3.532 12.148.72 7.518 6.114 11.695 14.626 14.957 5.425 2.131 9.469 3.682 8.694 8.036-.479 2.658-3.022 4.483-6.421 4.483-6.175 0-9.085-3.248-11.597-7.506l-10.171 6.072c2.321 4.916 5.854 8.748 10.409 11.153 4.438 2.348 9.808 3.054 15.36 2.431 5.702-.647 10.827-3.22 14.044-7.416 3.377-4.408 4.257-10.253 3.396-15.332zm-49.121 1.138c-.917-5.711-4.641-10.422-15.672-14.895-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.695-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.926-3.403 2.034.656 3.97 2.321 5.279 4.364l9.752-6.333c-2.247-3.403-5.271-6.079-9.284-7.964-3.895-1.867-8.429-2.439-13.082-1.596-4.252.764-8.295 2.956-10.964 6.075-2.929 3.405-3.946 7.897-3.532 12.148.72 7.518 6.114 11.695 14.626 14.957 5.425 2.131 9.469 3.682 8.694 8.036-.479 2.658-3.022 4.483-6.421 4.483-6.175 0-9.085-3.248-11.597-7.506l-10.171 5.982c2.321 4.916 5.854 8.748 10.409 11.153 4.438 2.348 9.808 3.054 15.36 2.431 5.702-.647 10.827-3.22 14.044-7.416 3.378-4.409 4.258-10.254 3.396-15.333z" />
+            </svg><span>JavaScript</span></div>
+          <!-- Git -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#f34f29"
+                d="M124.7 58.9L69.1 3.3c-2.9-2.9-7.7-2.9-10.6 0l-10.5 10.5 13.3 13.3c3.1-1.1 6.6-.3 9 2.1 2.5 2.5 3.2 5.9 2.1 9L86.1 51.9c3.1-1.1 6.6-.3 9 2.1 3.4 3.4 3.4 9 0 12.4-3.4 3.4-9 3.4-12.4 0-2.6-2.6-3.3-6.5-1.8-9.7L68.3 44.1v31.6c.9.4 1.7 1 2.4 1.7 3.4 3.4 3.4 9 0 12.4-3.4 3.4-9 3.4-12.4 0-3.4-3.4-3.4-9 0-12.4 1-1 2.1-1.7 3.3-2.2V43.4c-1.2-.5-2.3-1.2-3.3-2.2-2.6-2.6-3.3-6.5-1.8-9.7L43.3 18.2 3.3 58.2c-2.9 2.9-2.9 7.7 0 10.6l55.6 55.6c2.9 2.9 7.7 2.9 10.6 0l55.2-55.2c2.9-2.9 2.9-7.7 0-10.3z" />
+            </svg><span>Git</span></div>
+          <!-- GitHub -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#fff"
+                d="M64 5.1C31.8 5.1 5.6 31.3 5.6 63.5c0 25.9 16.8 47.9 40 55.7 2.9.5 4-1.3 4-2.8 0-1.4-.1-6-.1-10.8-16.3 3.5-19.7-7-19.7-7-2.7-6.8-6.5-8.6-6.5-8.6-5.3-3.6.4-3.5.4-3.5 5.9.4 9 6 9 6 5.3 9 13.8 6.4 17.2 4.9.5-3.8 2-6.4 3.7-7.8-13-1.5-26.7-6.5-26.7-28.9 0-6.4 2.3-11.6 6-15.7-.6-1.5-2.6-7.4.6-15.4 0 0 4.9-1.6 16 6 4.6-1.3 9.6-1.9 14.5-1.9s9.9.7 14.5 1.9c11.1-7.5 16-6 16-6 3.2 8 1.2 13.9.6 15.4 3.7 4.1 6 9.3 6 15.7 0 22.4-13.7 27.4-26.7 28.9 2.1 1.8 4 5.4 4 10.9 0 7.8-.1 14.1-.1 16.1 0 1.6 1.1 3.4 4 2.8C106.6 111.5 122.4 89.4 122.4 63.5 122.4 31.3 96.2 5.1 64 5.1z" />
+            </svg><span>GitHub</span></div>
+          <!-- MongoDB -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path
+                d="M105.7 56.4C104 32.7 86.2 13.4 63.3 9.2c-1.3-.2-2.5.7-2.8 2l-1 6.9C44.9 20.9 32 33.4 28.7 49.5c-3.7 18.2 4.9 36.5 20.3 45.6l1.6 26.6c.1 1.3 1.3 2.3 2.6 2.2l22.9-1.4c1.3-.1 2.3-1.2 2.2-2.6l-1.5-25.5c14.9-8.3 24.3-24.1 24.3-41.6 0-5.4-.9-10.7-2.6-15.7l6.9-1c1.3-.2 2.2-1.4 2-2.8l-1.7-18.4z"
+                fill="#589636" />
+              <path
+                d="M64 108.5V22.2c0-.6.4-.9.7-.6 13.5 9.5 22.3 25 22.3 42.4 0 17.4-8.8 33-22.3 42.4-.3.3-.7 0-.7-.6v2.7z"
+                fill="#6cac48" />
+              <path
+                d="M64 22.2v86.3c0 .6-.4.9-.7.6C49.8 99.6 41 84.1 41 66.7c0-17.4 8.8-33 22.3-42.4.3-.3.7 0 .7.6v-2.7z"
+                fill="#3f722b" />
+            </svg><span>MongoDB</span></div>
+          <!-- MySQL -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#00618a"
+                d="M2 1h23.3v3.9H6.4v8.3H25v3.9H6.4v9.4H26v3.9H2V1zm27.6 0h4.7l10.5 15.6L55.3 1H60v29.4h-4.4V8.5L45.2 23.7h-.5L34.4 8.5v21.9h-4.4V1zm35.4 0h4.5v25.5h16.9v3.9H65V1zm27.5 0h23.4v3.9H97v8.3h18.5v3.9H97v9.4h19.7v3.9H92.5V1z" />
+              <path fill="#e48e00"
+                d="M93.8 77.6c-4-10.9-12.1-20.2-20.9-25.7 10.1 2.6 19.4 9.6 24 21.1 4.7 12 1.4 24.5-7 30.7 2.2-6.8 6.7-17.2 3.9-26.1z" />
+              <path fill="#00618a"
+                d="M31.2 52.7c-5.9-.1-10.4 1.3-14.2 3.5v.5c.3 0 .6 0 .8.1 2.9.3 5.8 1.1 8.3 2.8 1.4.9 2.4 2.6 1.8 3.8-.9 2-3.6 1.3-5.3.5-4.5-2-8.4-2.1-10.6-.1-1.9 1.7-2.4 4.7-1 8.8 3.4 9.9 13.1 16.9 22.5 16.9 12.8 0 19.6-9.2 19.6-18.8.1-10.1-8.2-17.6-21.9-18z" />
+            </svg><span>MySQL</span></div>
+          <!-- Power BI -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <rect x="8" y="48" width="24" height="72" rx="4" fill="#f2c94c" />
+              <rect x="40" y="32" width="24" height="88" rx="4" fill="#f2994a" />
+              <rect x="72" y="8" width="24" height="112" rx="4" fill="#f7b731" />
+              <rect x="104" y="56" width="16" height="64" rx="4" fill="#e67e22" />
+            </svg><span>Power BI</span></div>
+          <!-- Docker -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#384d54"
+                d="M124.8 52.1c-2.8-1.9-9.2-2.6-14.1-1.7-.6-4.9-3.5-9.1-8.8-12.9l-3-2-2 3c-2.5 3.8-3.2 10-2.8 13.5-1.8 1-5.4 2.5-6.8 3.1H10.1C5.9 66.3 5 79.5 9.3 90c4.1 9.9 12.4 17.5 26.2 17.5 24.7 0 43-11.2 51.7-31.6 3.4.1 10.7.1 14.5-6.9.2-.3 1.3-2.6 1.7-3.4l-3.3-2.1c.1-.1 2.2-1.3 1.1-11.4z" />
+              <path fill="#00acd3"
+                d="M14 55.7H25v10.6H14V55.7zm12.6 0h11v10.6h-11V55.7zm12.7 0h11v10.6h-11V55.7zm12.7 0h11v10.6h-11V55.7zm12.6 0h11v10.6H64.6V55.7zM14 43.7h11v10.6H14V43.7zm12.6 0h11v10.6h-11V43.7zm12.7 0h11v10.6h-11V43.7zm12.7 0h11v10.6h-11V43.7zm12.6 0h11v10.6H64.6V43.7zm12.7 0h11v10.6h-11V43.7zM39.3 31.7h11v10.6h-11V31.7zm12.7 0h11v10.6h-11V31.7zm12.6 0h11v10.6H64.6V31.7z" />
+            </svg><span>Docker</span></div>
+          <!-- Duplicate set for seamless loop -->
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <linearGradient id="pa2" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089"
+                gradientUnits="userSpaceOnUse" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
+                <stop offset="0" stop-color="#5a9fd4" />
+                <stop offset="1" stop-color="#306998" />
+              </linearGradient>
+              <linearGradient id="pb2" x1="209.474" y1="1098.811" x2="173.62" y2="1149.537"
+                gradientUnits="userSpaceOnUse" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
+                <stop offset="0" stop-color="#ffd43b" />
+                <stop offset="1" stop-color="#ffe873" />
+              </linearGradient>
+              <path fill="url(#pa2)"
+                d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z" />
+              <path fill="url(#pb2)"
+                d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.693 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z" />
+            </svg><span>Python</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#e55b2d"
+                d="M24.57 127.86V46.47L64 23.34l39.43 23.13v40.59L64 110.19l-24.45-14.35V68.69l24.45 14.35 14.81-8.69V60.7L64 46.35l-24.82 14.56v47.77z" />
+              <path fill="#f8bf3c" d="M64 23.34L24.57 46.47v22.22L64 45.57l39.43 23.11V46.47z" />
+            </svg><span>TensorFlow</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path
+                d="M65.6 35.9L46.1 55.4c-10.4 10.4-10.4 27.3 0 37.7 10.4 10.4 27.3 10.4 37.7 0 10.4-10.4 10.4-27.3 0-37.7l-5.7-5.7 8.1-8.1 5.7 5.7c14.7 14.7 14.7 38.6 0 53.3-14.7 14.7-38.6 14.7-53.3 0-14.7-14.7-14.7-38.6 0-53.3L57.5 28l8.1 7.9z"
+                fill="#ee4c2c" />
+              <circle cx="77.3" cy="29.8" r="5.4" fill="#ee4c2c" />
+            </svg><span>PyTorch</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#f89939" d="M54.03 43.4l6.17-22.16 22.14 6.17-6.16 22.15z" />
+              <path fill="#3499cd" d="M44.27 71.08L22.14 64.9l6.17-22.15 22.13 6.17z" />
+              <path fill="#3499cd" d="M77.88 96.75L55.74 90.6l6.17-22.16 22.13 6.17z" />
+              <path fill="#f89939" d="M105.86 84.6L83.73 78.4l6.16-22.15 22.14 6.17z" />
+              <ellipse fill="#3499cd" cx="64" cy="64" rx="21" ry="21" />
+              <ellipse fill="#fff" cx="64" cy="64" rx="12" ry="12" />
+            </svg><span>Scikit-Learn</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <circle cx="64" cy="28" r="22" fill="#3f8cbf" />
+              <circle cx="28" cy="92" r="22" fill="#cf2027" />
+              <circle cx="100" cy="92" r="22" fill="#6db33f" />
+              <circle cx="64" cy="28" r="9" fill="#1a1a2e" />
+              <circle cx="28" cy="92" r="9" fill="#1a1a2e" />
+              <circle cx="100" cy="92" r="9" fill="#1a1a2e" />
+            </svg><span>OpenCV</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <circle cx="64" cy="64" r="11.4" fill="#61dafb" />
+              <path
+                d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.5 7.1-2.4.7-4.7 1.4-6.9 2.3C58.6 29.1 110 42.2 110 64c0 21.8-51.4 34.9-74.7 18.8z"
+                fill="none" stroke="#61dafb" stroke-width="7.5" />
+            </svg><span>React</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#3fb6d3" d="M12.3 64.2L76.3 0h39.4L51.7 64.2z" />
+              <path fill="#27aacd" d="M76.3 128l-29.7-29.7 14.9-14.9L116 128z" />
+              <path fill="#3fb6d3" d="M46.6 98.3L76.3 128H116L61.5 83.4z" />
+              <path fill="#27aacd" d="M51.7 64.2l14.9 14.9-14.9 14.9L12.3 64.2z" />
+              <path fill="#1c9ab5" d="M61.5 83.4l14.8-14.8 14.9 14.8-14.9 14.9z" />
+            </svg><span>Flutter</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#e44d26" d="M19.4 116L8 0h112l-11.4 116L64 128z" />
+              <path fill="#f16529" d="M64 118.4l36.5-10.1 9.7-109H64z" />
+              <path fill="#ebebeb"
+                d="M64 66H44.6l-1.4-15.6H64V35.2H27.7L28.1 40l4.1 46.4H64zm0 27.8l-.1.1-18.4-4.9-1.2-13H29.2l2.3 25.6L64 110z" />
+              <path fill="#fff"
+                d="M64 66v15.2h17.9L80.4 95l-16.4 4.4v14.9l30.2-8.4 2.2-24.5H64zm3.1-30.8H64v15.2h34.5l-1.6-18.5-4.2-47.2H64v15.2h29.4l2 22.3z" />
+            </svg><span>HTML5</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#f0db4f" d="M1.408 1.408h125.184v125.185H1.408z" />
+              <path fill="#323330"
+                d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.926-3.403 2.034.656 3.97 2.321 5.279 4.364l9.752-6.333c-2.247-3.403-5.271-6.078-9.284-7.964-3.895-1.867-8.429-2.439-13.082-1.596-4.252.764-8.295 2.956-10.964 6.075-2.929 3.405-3.946 7.897-3.532 12.148.72 7.518 6.114 11.695 14.626 14.957 5.425 2.131 9.469 3.682 8.694 8.036-.479 2.658-3.022 4.483-6.421 4.483-6.175 0-9.085-3.248-11.597-7.506l-10.171 6.072c2.321 4.916 5.854 8.748 10.409 11.153 4.438 2.348 9.808 3.054 15.36 2.431 5.702-.647 10.827-3.22 14.044-7.416 3.378-4.409 4.258-10.254 3.396-15.333z" />
+            </svg><span>JavaScript</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#f34f29"
+                d="M124.7 58.9L69.1 3.3c-2.9-2.9-7.7-2.9-10.6 0l-10.5 10.5 13.3 13.3c3.1-1.1 6.6-.3 9 2.1 2.5 2.5 3.2 5.9 2.1 9L86.1 51.9c3.1-1.1 6.6-.3 9 2.1 3.4 3.4 3.4 9 0 12.4-3.4 3.4-9 3.4-12.4 0-2.6-2.6-3.3-6.5-1.8-9.7L68.3 44.1v31.6c.9.4 1.7 1 2.4 1.7 3.4 3.4 3.4 9 0 12.4-3.4 3.4-9 3.4-12.4 0-3.4-3.4-3.4-9 0-12.4 1-1 2.1-1.7 3.3-2.2V43.4c-1.2-.5-2.3-1.2-3.3-2.2-2.6-2.6-3.3-6.5-1.8-9.7L43.3 18.2 3.3 58.2c-2.9 2.9-2.9 7.7 0 10.6l55.6 55.6c2.9 2.9 7.7 2.9 10.6 0l55.2-55.2c2.9-2.9 2.9-7.7 0-10.3z" />
+            </svg><span>Git</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#fff"
+                d="M64 5.1C31.8 5.1 5.6 31.3 5.6 63.5c0 25.9 16.8 47.9 40 55.7 2.9.5 4-1.3 4-2.8 0-1.4-.1-6-.1-10.8-16.3 3.5-19.7-7-19.7-7-2.7-6.8-6.5-8.6-6.5-8.6-5.3-3.6.4-3.5.4-3.5 5.9.4 9 6 9 6 5.3 9 13.8 6.4 17.2 4.9.5-3.8 2-6.4 3.7-7.8-13-1.5-26.7-6.5-26.7-28.9 0-6.4 2.3-11.6 6-15.7-.6-1.5-2.6-7.4.6-15.4 0 0 4.9-1.6 16 6 4.6-1.3 9.6-1.9 14.5-1.9s9.9.7 14.5 1.9c11.1-7.5 16-6 16-6 3.2 8 1.2 13.9.6 15.4 3.7 4.1 6 9.3 6 15.7 0 22.4-13.7 27.4-26.7 28.9 2.1 1.8 4 5.4 4 10.9 0 7.8-.1 14.1-.1 16.1 0 1.6 1.1 3.4 4 2.8C106.6 111.5 122.4 89.4 122.4 63.5 122.4 31.3 96.2 5.1 64 5.1z" />
+            </svg><span>GitHub</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <rect x="8" y="48" width="24" height="72" rx="4" fill="#f2c94c" />
+              <rect x="40" y="32" width="24" height="88" rx="4" fill="#f2994a" />
+              <rect x="72" y="8" width="24" height="112" rx="4" fill="#f7b731" />
+              <rect x="104" y="56" width="16" height="64" rx="4" fill="#e67e22" />
+            </svg><span>Power BI</span></div>
+          <div class="mq-icon"><svg viewBox="0 0 128 128">
+              <path fill="#384d54"
+                d="M124.8 52.1c-2.8-1.9-9.2-2.6-14.1-1.7-.6-4.9-3.5-9.1-8.8-12.9l-3-2-2 3c-2.5 3.8-3.2 10-2.8 13.5-1.8 1-5.4 2.5-6.8 3.1H10.1C5.9 66.3 5 79.5 9.3 90c4.1 9.9 12.4 17.5 26.2 17.5 24.7 0 43-11.2 51.7-31.6 3.4.1 10.7.1 14.5-6.9.2-.3 1.3-2.6 1.7-3.4l-3.3-2.1c.1-.1 2.2-1.3 1.1-11.4z" />
+              <path fill="#00acd3"
+                d="M14 55.7H25v10.6H14V55.7zm12.6 0h11v10.6h-11V55.7zm12.7 0h11v10.6h-11V55.7zm12.7 0h11v10.6h-11V55.7zm12.6 0h11v10.6H64.6V55.7zM14 43.7h11v10.6H14V43.7zm12.6 0h11v10.6h-11V43.7zm12.7 0h11v10.6h-11V43.7zm12.7 0h11v10.6h-11V43.7zm12.6 0h11v10.6H64.6V43.7zm12.7 0h11v10.6h-11V43.7zM39.3 31.7h11v10.6h-11V31.7zm12.7 0h11v10.6h-11V31.7zm12.6 0h11v10.6H64.6V31.7z" />
+            </svg><span>Docker</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS SECTION ===== -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line"></span>
+        <span>03. Projects</span>
+      </div>
+      <h2 class="section-title">Featured <span class="gradient-text">Work</span></h2>
+      <p class="section-subtitle">Some things I've built that I'm proud of</p>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="01.png" alt="Lecture Summarization & Translation" class="project-screenshot" />
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/nemishsapara69/Lecture-Summarization" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">01</div>
+            <h3 class="project-title">Lecture Summarization &amp; Translation</h3>
+            <p class="project-desc">
+              AI-powered Flask web app for processing lectures — upload audio or enter text to get instant
+              speech-to-text transcription via <strong>OpenAI Whisper</strong>, intelligent summarization via
+              <strong>BART</strong>, and multilingual translation via <strong>Google Translate API</strong>.
+              Features drag-and-drop upload, voice input, and dark/light theme.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Flask</span>
+              <span>Whisper</span>
+              <span>BART</span>
+              <span>Google Translate</span>
+              <span>NLP</span>
+            </div>
+            <a href="https://github.com/nemishsapara69/Lecture-Summarization" target="_blank" rel="noopener noreferrer" class="project-view-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              View Work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="02.webp" alt="Machine Learning Projects" class="project-screenshot" />
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/nemishsapara69/Machine_Learning_Project" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">02</div>
+            <h3 class="project-title">Machine Learning Projects</h3>
+            <p class="project-desc">
+              A collection of end-to-end ML projects built with Jupyter Notebooks — including
+              <strong>Diabetes Prediction</strong>, <strong>Food Delivery Analysis</strong>, and a
+              <strong>Fraud Detection System</strong>. Covers full pipelines: data preprocessing, model
+              training, evaluation, and visualization with real-world datasets.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Scikit-Learn</span>
+              <span>Pandas</span>
+              <span>Matplotlib</span>
+              <span>Jupyter</span>
+            </div>
+            <a href="https://github.com/nemishsapara69/Machine_Learning_Project" target="_blank" rel="noopener noreferrer" class="project-view-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              View Work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="03.png" alt="NSS Mobile App — Charusat University" class="project-screenshot" />
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/nemishsapara69/Build-NSS-app-for-university" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">03</div>
+            <h3 class="project-title">NSS Mobile App — Charusat University</h3>
+            <p class="project-desc">
+              A centralized cross-platform mobile app built with <strong>Flutter + Firebase</strong> for the
+              National Service Scheme at Charusat University. Connects students, volunteers, and coordinators
+              with role-based dashboards, event management, attendance &amp; hours tracking, push notifications,
+              and a communication hub.
+            </p>
+            <div class="project-tech">
+              <span>Flutter</span>
+              <span>Firebase</span>
+              <span>Firestore</span>
+              <span>Dart</span>
+              <span>Firebase Auth</span>
+            </div>
+            <a href="https://github.com/nemishsapara69/Build-NSS-app-for-university" target="_blank" rel="noopener noreferrer" class="project-view-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              View Work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="04.jpg" alt="GitaMind — Daily Dose of Wisdom" class="project-screenshot" />
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/nemishsapara69/GitaMind-Your-Daily-Dose-of-Wisdom" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">04</div>
+            <h3 class="project-title">GitaMind 🕉️ — Daily Dose of Wisdom</h3>
+            <p class="project-desc">
+              A full-stack <strong>MERN</strong> web app bringing the timeless wisdom of the Bhagavad Gita
+              to life. Features mood-based verse exploration, audio recitations, personal favorites &amp; notes,
+              daily visit streak, powerful keyword search, related verses, JWT authentication, and dark/light mode.
+            </p>
+            <div class="project-tech">
+              <span>React.js</span>
+              <span>Node.js</span>
+              <span>Express.js</span>
+              <span>MongoDB</span>
+              <span>JWT</span>
+            </div>
+            <a href="https://github.com/nemishsapara69/GitaMind-Your-Daily-Dose-of-Wisdom" target="_blank" rel="noopener noreferrer" class="project-view-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              View Work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line"></span>
+        <span>04. Contact</span>
+      </div>
+      <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+      <p class="section-subtitle">Have a project in mind? Let's build something amazing together.</p>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <a href="mailto:nemishsapara69@gmail.com" class="contact-value">nemishsapara69@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">India</div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">💼</div>
+            <div>
+              <div class="contact-label">Availability</div>
+              <div class="contact-value available">Open to opportunities</div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com/nemishsapara69" target="_blank" class="social-link" title="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/nemish-sapara-b61268285/" target="_blank" class="social-link"
+              title="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a href="https://leetcode.com/u/23aiml061_nemishsapara/" target="_blank" class="social-link"
+              title="LeetCode">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mgolndyk" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Project Collaboration" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..."
+              required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <span>Send Message</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+            </svg>
+          </button>
+          <div class="form-success" id="formSuccess"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-bracket">&lt;</span>
+          <span class="logo-name">NS</span>
+          <span class="logo-bracket">/&gt;</span>
+        </div>
+        <p class="footer-text">Designed &amp; Built by <strong>Nemish Sapara</strong></p>
+        <p class="footer-copy">© 2026 All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
