@@ -32,7 +32,7 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <!-- Hide intro instantly if already seen (prevents flash on refresh) -->
-  <script>localStorage.removeItem('introSeen');if(localStorage.getItem('introSeen')){document.documentElement.classList.add('intro-seen');}history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+  <script>if(localStorage.getItem('introSeen')){document.documentElement.classList.add('intro-seen');}history.scrollRestoration='manual';window.scrollTo(0,0);</script>
 </head>
 
 <body>
