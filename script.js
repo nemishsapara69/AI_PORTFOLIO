@@ -10,13 +10,7 @@
 
   if (!introScreen) return;
 
-  // ── Skip intro after first visit (never replay on refresh or new tab) ──
-  if (localStorage.getItem('introSeen')) {
-    introScreen.classList.add('hidden');
-    document.body.classList.remove('intro-active');
-    document.body.style.overflow = '';
-    return;
-  }
+
 
   // Pre-load whoosh sound
   const whooshSound = new Audio('dragon-studio-whoosh-cinematic-sound-effect-376889.mp3');
@@ -99,9 +93,6 @@
     if (skipped && introStep > 0) return;
     introStep = 1;
 
-    // Mark intro as seen permanently so it never replays
-    localStorage.setItem('introSeen', '1');
-
     // Trigger sound
     whooshSound.currentTime = 0;
     whooshSound.play().catch(() => { });
@@ -115,6 +106,9 @@
         introScreen.classList.add('hidden');
         document.body.classList.remove('intro-active');
         document.body.style.overflow = '';
+        // Trigger hero name animation after intro finishes
+        var heroNameEl = document.getElementById('heroName');
+        if (heroNameEl) { typeWriter(heroNameEl, heroNameEl.textContent || 'Nemish Sapara', 70); }
       }, 400);
     }, 500);
   }
@@ -784,23 +778,30 @@ if (heroCard) {
 
 // â”€â”€â”€ Typing Effect for Hero Name â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function typeWriter(element, text, speed = 80) {
-  element.textContent = '';
+  // Use child spans: typed-chars inherits gradient, cursor is a solid bar
+  element.innerHTML = '<span class="typed-chars"></span><span class="typing-cursor"></span>';
+  const charsEl = element.querySelector('.typed-chars');
+  const cursorEl = element.querySelector('.typing-cursor');
+
   let i = 0;
   function type() {
     if (i < text.length) {
-      element.textContent += text.charAt(i);
+      charsEl.textContent += text.charAt(i);
       i++;
       setTimeout(type, speed);
+    } else {
+      // Blink cursor a moment then remove it
+      setTimeout(() => {
+        cursorEl.style.animation = 'none';
+        cursorEl.style.opacity = '0';
+        setTimeout(() => cursorEl.remove(), 300);
+      }, 900);
     }
   }
-  setTimeout(type, 600);
+  type(); // start immediately — caller controls the delay
 }
 
-const heroName = document.getElementById('heroName');
-if (heroName) {
-  const name = heroName.textContent;
-  typeWriter(heroName, name, 70);
-}
+// Hero name typewriter is now triggered after the intro screen closes (see intro IIFE above)
 
 // Parallax is now handled in the unified scroll handler above
 

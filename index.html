@@ -32,7 +32,7 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <!-- Hide intro instantly if already seen (prevents flash on refresh) -->
-  <script>if(localStorage.getItem('introSeen')){document.documentElement.classList.add('intro-seen');}history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+  <script>history.scrollRestoration='manual';window.scrollTo(0,0);</script>
 </head>
 
 <body>
@@ -85,6 +85,12 @@
             </svg>
             Skills
           </a></li>
+        <li><a href="#research" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+            </svg>
+            Research
+          </a></li>
         <li><a href="#projects" class="nav-link">
             <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd"
@@ -122,6 +128,7 @@
     <ul>
       <li><a href="#about" class="mobile-link">About</a></li>
       <li><a href="#skills" class="mobile-link">Skills</a></li>
+      <li><a href="#research" class="mobile-link">Research</a></li>
       <li><a href="#projects" class="mobile-link">Projects</a></li>
       <li><a href="#contact" class="mobile-link">Contact</a></li>
 
@@ -529,12 +536,75 @@
     </div>
   </section>
 
+  <!-- ===== RESEARCH PAPERS SECTION ===== -->
+  <section class="research" id="research">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line"></span>
+        <span>03. Research</span>
+      </div>
+      <h2 class="section-title">Research <span class="gradient-text">Papers</span></h2>
+      <p class="section-subtitle">Published work contributing to AI &amp; Machine Learning research</p>
+
+      <div class="research-grid">
+
+        <!-- Paper 1 -->
+        <div class="research-card">
+          <div class="research-meta">
+            <span class="research-tag">Natural Language Processing</span>
+            <span class="research-year">2025</span>
+          </div>
+          <h3 class="research-title">Automated Lecture Summarization Using Transformer-Based Models</h3>
+          <p class="research-abstract">
+            This paper presents a pipeline for automated lecture content processing combining OpenAI Whisper
+            for speech recognition, BART for abstractive summarization, and multilingual translation,
+            achieving significant improvements in educational content accessibility.
+          </p>
+          <div class="research-authors">Nemish Sapara et al.</div>
+          <div class="research-footer">
+            <div class="research-tags">
+              <span>Whisper</span><span>BART</span><span>NLP</span><span>Transformers</span>
+            </div>
+            <a href="paper1.pdf" target="_blank" rel="noopener noreferrer" class="research-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg>
+              View Paper
+            </a>
+          </div>
+        </div>
+
+        <!-- Paper 2 -->
+        <div class="research-card research-card--incoming">
+          <div class="research-meta">
+            <span class="research-tag">AI &amp; Public Policy</span>
+            <span class="research-incoming-badge">
+              <span class="incoming-dot"></span>
+              Incoming
+            </span>
+          </div>
+          <h3 class="research-title">Sahi Ration: An AI-Powered WhatsApp-Based Ration Card Verification System for Rural Beneficiaries in India's Public Distribution System</h3>
+          <p class="research-abstract">
+            Proposes an intelligent WhatsApp-based verification system leveraging AI to authenticate ration
+            card beneficiaries in India's Public Distribution System, targeting rural accessibility,
+            reducing fraud, and enabling real-time eligibility checks through a conversational interface.
+          </p>
+          <div class="research-authors">Nemish Sapara et al.</div>
+          <div class="research-footer">
+            <div class="research-tags">
+              <span>WhatsApp API</span><span>NLP</span><span>AI</span><span>GovTech</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PROJECTS SECTION ===== -->
   <section class="projects" id="projects">
     <div class="container">
       <div class="section-label">
         <span class="label-line"></span>
-        <span>03. Projects</span>
+        <span>04. Projects</span>
       </div>
       <h2 class="section-title">Featured <span class="gradient-text">Work</span></h2>
       <p class="section-subtitle">Some things I've built that I'm proud of</p>
@@ -720,7 +790,7 @@
     <div class="container">
       <div class="section-label">
         <span class="label-line"></span>
-        <span>04. Contact</span>
+        <span>05. Contact</span>
       </div>
       <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
       <p class="section-subtitle">Have a project in mind? Let's build something amazing together.</p>

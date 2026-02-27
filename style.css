@@ -867,6 +867,34 @@ section {
   background-clip: text;
 }
 
+/* Typed characters inherit gradient from parent */
+.hero-name .typed-chars {
+  background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Blinking block cursor */
+.typing-cursor {
+  display: inline-block;
+  width: 4px;
+  height: 0.82em;
+  background-color: #f1f5f9;
+  -webkit-text-fill-color: initial;
+  margin-left: 6px;
+  vertical-align: middle;
+  border-radius: 2px;
+  animation: cursorBlink 0.65s step-end infinite;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 .hero-role {
   display: flex;
   align-items: center;
@@ -1544,6 +1572,197 @@ section {
   color: var(--silver-light);
 }
 
+
+/* ===================================
+   RESEARCH PAPERS SECTION
+=================================== */
+.research {
+  background: transparent;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.research-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.research-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.research-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.research-card:hover::before {
+  opacity: 1;
+}
+
+.research-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.research-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  color: var(--silver);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.research-year {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.research-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.research-card:hover .research-title {
+  color: #fff;
+}
+
+.research-abstract {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  flex: 1;
+}
+
+.research-authors {
+  font-size: 0.8rem;
+  font-family: var(--mono);
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.research-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.research-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.research-tags span {
+  padding: 3px 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-family: var(--mono);
+  color: var(--silver-dark);
+}
+
+.research-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-family: var(--font);
+  font-weight: 500;
+  color: var(--silver-light);
+  text-decoration: none;
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.research-btn:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.45);
+  transform: translateX(2px);
+}
+
+/* Incoming paper variant */
+.research-card--incoming {
+  opacity: 0.75;
+}
+
+.research-card--incoming:hover {
+  opacity: 1;
+}
+
+.research-incoming-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-family: var(--mono);
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.incoming-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fbbf24;
+  animation: incomingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes incomingPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
 /* ===================================
    PROJECTS SECTION
 =================================== */
@@ -1581,7 +1800,7 @@ section {
 .project-img {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/7;
 }
 
 .project-card.featured .project-img {
@@ -1710,7 +1929,7 @@ section {
 }
 
 .project-info {
-  padding: 24px;
+  padding: 18px 20px;
 }
 
 .project-number {
@@ -1722,9 +1941,9 @@ section {
 }
 
 .project-title {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   transition: var(--transition);
 }
 
@@ -1733,10 +1952,10 @@ section {
 }
 
 .project-desc {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 16px;
+  line-height: 1.65;
+  margin-bottom: 12px;
 }
 
 .project-tech {
@@ -1758,7 +1977,7 @@ section {
 .project-screenshot {
   width: 100%;
   height: 100%;
-  min-height: 220px;
+  min-height: 160px;
   object-fit: cover;
   object-position: top center;
   display: block;
@@ -1773,12 +1992,12 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 18px;
-  padding: 10px 20px;
+  margin-top: 12px;
+  padding: 8px 16px;
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-family: var(--font);
   font-weight: 500;
   color: var(--silver-light);
@@ -2088,6 +2307,10 @@ section {
   }
 
   .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .research-grid {
     grid-template-columns: 1fr;
   }
 
